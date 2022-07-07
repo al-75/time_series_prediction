@@ -42,6 +42,6 @@ mape=100*np.sum(abs(y_test-prediction)/y_test)/y_test.shape[0]#ошибка пр
 print("Ошибка прогноза mape {} %".format(mape))
 
 
-wape=100*np.sum(abs(y_test-prediction))/np.sum(y_test)#лучшая ошибка прогноза
+wape=100*np.sum(abs(y_test-prediction))/np.sum(y_test)
 print("Ошибка прогноза wape {} %".format(wape))
 plt.show()
