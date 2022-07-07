@@ -16,7 +16,7 @@ import sklearn.model_selection as model_selection
 import joblib
 
 
-df=pd.read_excel('f:\gorserv\Gorserv.xlsx',sheet_name='Лист1',usecols=("A:Q"))
+df=pd.read_excel(r'f:\gorserv\Gorserv.xlsx',sheet_name='Лист1',usecols=("A:Q"))
 
 
 #Тестируем
