@@ -9,7 +9,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.neural_network import MLPRegressor
 import matplotlib.pyplot as plt
-import quandl
+#import quandl
 from sklearn.metrics import mean_absolute_error
 from pandas.plotting import register_matplotlib_converters
 import sklearn.model_selection as model_selection
