@@ -73,7 +73,7 @@ data=data.set_index(['Date'],drop=True)
 
 
 #Тестируем
-X_train, X_test, y_train, y_test = prepareData(data,lag_start=5, lag_end=9,test_size=0.3)
+X_train, X_test, y_train, y_test = prepareData(data,lag_start=5, lag_end=11,test_size=0.3)
 #lr = MLPRegressor(hidden_layer_sizes=(5,5),activation='relu', solver='lbfgs',learning_rate_init=0.5, max_iter=3000)
 #lr = LinearRegression()
 lr=RandomForestRegressor()
