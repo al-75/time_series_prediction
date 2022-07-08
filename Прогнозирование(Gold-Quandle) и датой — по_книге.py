@@ -90,7 +90,7 @@ prediction = lr.predict(X_test)
 f=X_test.index.map(lambda x:data.dropna().index[x])
 
 
-fig,ax=plt.subplots(1,1,figsize=(15, 5))
+fig,ax=plt.subplots(1,1,figsize=(10, 5))
 plt.plot_date(f,prediction, "ro-", label="prediction")
 plt.plot_date(f,y_test.values, linestyle='dashed',label="actual")
 plt.legend(loc="best")
