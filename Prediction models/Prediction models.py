@@ -92,8 +92,8 @@ lr.fit(X_train, y_train)
 
 
 prediction = lr.predict(X_test)
-#Классный mapping
-f=X_test.index.map(lambda x:data.dropna().index[x])
+
+f=X_test.index.map(lambda x:data.index[x])
 
 fig,ax=plt.subplots(1,1,figsize=(15, 7))
 plt.plot_date(f,prediction, "ro-", label="prediction")
