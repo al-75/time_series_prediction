@@ -44,15 +44,14 @@ def prepareData(data, lag_start, lag_end, test_size):
      
     #/В зависимости какая у нас временная шкала - или день недели или месяц
     
-    data["weekday"]=data.index.month
-    data["quarter"]=data.index.quarter
+    data['weekday']=data.index.month
+    data['quarter']=data.index.quarter
    
     # считаем средние только по тренировочной части, чтобы избежать лика
     data['weekday_average'] = data.weekday.map(code_mean(data[:test_index], 'weekday', 'y'))
-    data["quarter_average"]=data.quarter.map(code_mean(data[:test_index], 'quarter', 'y'))
+    data['quarter_average']=data.quarter.map(code_mean(data[:test_index], 'quarter', 'y'))
     # выкидываем закодированные средними признаки 
-    data.drop(["weekday"], axis=1, inplace=True)
-    data.drop(["quarter"], axis=1, inplace=True)
+    data.drop(['weekday','quarter'], axis=1, inplace=True)
     
     data = data.dropna()
     
@@ -73,10 +72,8 @@ def prepareData(data, lag_start, lag_end, test_size):
 
 
 data=pd.read_excel('Prediction model.xlsx',sheet_name='запрос',usecols=('Период','Количество'), parse_dates=['Период'])
+#data=data[:-4]
 data=data.set_index(['Период'],drop=True)
-#///// Для теста отбрасываем прогнозируемые даты ///////////
-
-#data=pd.date_range('2021-04-01',periods=5,freq='M')
 
 
 #Тестируем
@@ -96,13 +93,12 @@ lr=RandomForestRegressor(n_estimators=100, max_features ='sqrt')
 lr= joblib.load('preforma.pkl')#Выгрузка модели из файла
 
 
-
 X_test=data[-4:].loc[:,'lag_4':].reset_index(drop=True)
 prediction = lr.predict(X_test)
 #Классный mapping
-f=X_test.index.map(lambda x:data.dropna().index[x])
+f=X_test.index.map(lambda x:data[-4:].loc[:,'lag_4':].index[x])
 
-fig,ax=plt.subplots(1,1,figsize=(12, 5))
+fig,ax=plt.subplots(1,1,figsize=(10, 5))
 #plt.plot(prediction, "ro-", label="prediction")
 plt.plot_date(f,prediction, "ro-", label="prediction")
 
