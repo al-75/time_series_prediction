@@ -38,12 +38,12 @@ def prepareData(data, lag_start, lag_end, test_size):
     for i in range(lag_start, lag_end):
         data["lag_{}".format(i)] = data.y.shift(i)
 
-    #/В зависимости какая у нас временная шкала - или день недели или месяц
+    #Добавляем новые признаки времени
     
     data["weekday"]=data.index.month
     data["quarter"]=data.index.quarter
    
-    # считаем средние только по тренировочной части, чтобы избежать лика
+    # считаем средние только по тренировочной части
     data['weekday_average'] = data.weekday.map(code_mean(data[:test_index], 'weekday', 'y'))
     data["quarter_average"]=data.quarter.map(code_mean(data[:test_index], 'quarter', 'y'))
     # выкидываем закодированные средними признаки 
@@ -53,7 +53,6 @@ def prepareData(data, lag_start, lag_end, test_size):
     data = data.dropna()
     
     data = data.reset_index(drop=True)
-    
     
     test_index = int(len(data)*(1-test_size))
 
@@ -67,7 +66,7 @@ def prepareData(data, lag_start, lag_end, test_size):
     return X_train, X_test, y_train, y_test
 
 
-
+#Источник данных
 data=pd.read_excel('Prediction model.xlsx',sheet_name='запрос',usecols=('Период','Количество'), parse_dates=['Период'])
 data=data.set_index(['Период'],drop=True) 
 
