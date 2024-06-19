@@ -84,7 +84,7 @@ lr=RandomForestRegressor(n_estimators=100, max_features ='sqrt')
 
 #////////////////////////////////////////
 # Загрузка в файл модели
-#joblib.dump(lr,'preforma.pkl', compress=9)
+joblib.dump(lr,'preforma.pkl', compress=9)
 lr= joblib.load('preforma.pkl')#Выгрузка модели из файла
 
 
