@@ -80,12 +80,12 @@ lr=RandomForestRegressor(n_estimators=100, max_features ='sqrt')
 #lr=LogisticRegression()
 #lr=SVR(kernel='linear')
 
-lr.fit(X_train, y_train)
+#lr.fit(X_train, y_train)
 
 #////////////////////////////////////////
 # Загрузка в файл модели
 #joblib.dump(lr,'preforma.pkl', compress=9)
-#lr= joblib.load('preforma.pkl')#Выгрузка модели из файла
+lr= joblib.load('preforma.pkl')#Выгрузка модели из файла
 
 
 prediction = lr.predict(X_test)
