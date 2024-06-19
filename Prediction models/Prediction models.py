@@ -19,7 +19,6 @@ from pandas.plotting import register_matplotlib_converters
 
 import joblib
 
-pd.set_option('display.max_columns', None)
 
 def code_mean(data, cat_feature, real_feature):
   
