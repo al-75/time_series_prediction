@@ -1,5 +1,4 @@
-import logging
-logging.captureWarnings(True)
+
 #import openpyxl
 import pandas as pd
 import datetime as dt
