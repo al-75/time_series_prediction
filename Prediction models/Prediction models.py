@@ -1,5 +1,5 @@
 
-#import openpyxl
+
 import pandas as pd
 import datetime as dt
 import numpy as np
@@ -8,7 +8,7 @@ from datetime import timedelta, date
 from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.neural_network import MLPRegressor
-from sklearn.svm import SVR
+
 from tabulate import tabulate
 import matplotlib.pyplot as plt
 #import quandl
@@ -75,10 +75,10 @@ data=data.set_index(['Период'],drop=True)
 X_train, X_test, y_train, y_test = prepareData(data,lag_start=4, lag_end=8,test_size=0.3)
 #lr = MLPRegressor(hidden_layer_sizes=(5,5),activation='relu', solver='lbfgs',learning_rate_init=0.3, max_iter=30000)
 #lr = LinearRegression()
-#lr=RandomForestRegressor(n_estimators=100, max_features ='sqrt')
-lr=KNeighborsRegressor(n_neighbors=5)
+lr=RandomForestRegressor(n_estimators=100, max_features ='sqrt')
+#lr=KNeighborsRegressor(n_neighbors=5)
 #lr=LogisticRegression()
-#lr=SVR(kernel='linear')
+
 
 #lr.fit(X_train, y_train)
 
