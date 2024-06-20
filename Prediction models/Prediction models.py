@@ -1,5 +1,5 @@
 
-#import openpyxl
+
 import pandas as pd
 import datetime as dt
 import numpy as np
@@ -8,7 +8,7 @@ from datetime import timedelta, date
 from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.neural_network import MLPRegressor
-from sklearn.svm import SVR
+
 from tabulate import tabulate
 import matplotlib.pyplot as plt
 #import quandl
@@ -78,7 +78,7 @@ X_train, X_test, y_train, y_test = prepareData(data,lag_start=4, lag_end=8,test_
 lr=RandomForestRegressor(n_estimators=100, max_features ='sqrt')
 #lr=KNeighborsRegressor(n_neighbors=5)
 #lr=LogisticRegression()
-#lr=SVR(kernel='linear')
+
 
 #lr.fit(X_train, y_train)
 
