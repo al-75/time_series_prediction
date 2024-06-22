@@ -77,7 +77,7 @@ data=data.set_index(['Период'],drop=True)
 
 
 #Тестируем
-X_train, X_test, y_train, y_test = prepareData(data,lag_start=4, lag_end=8,test_size=0.3)
+X_train, X_test, y_train, y_test = prepareData(data,lag_start=4, lag_end=8,test_size=0.4)
 #lr = MLPRegressor(hidden_layer_sizes=(5,5),activation='relu', solver='lbfgs',learning_rate_init=0.3, max_iter=30000)
 #lr = LinearRegression()
 lr=RandomForestRegressor(n_estimators=100, max_features ='sqrt')
@@ -85,12 +85,12 @@ lr=RandomForestRegressor(n_estimators=100, max_features ='sqrt')
 #lr=LogisticRegression()
 #lr=SVR(kernel='linear')
 
-#lr.fit(X_train, y_train)
+lr.fit(X_train, y_train)
 
 #////////////////////////////////////////
 # Загрузка в файл модели
 #joblib.dump(lr,'preforma.pkl', compress=9)
-lr= joblib.load('preforma.pkl')#Выгрузка модели из файла
+#lr= joblib.load('preforma.pkl')#Выгрузка модели из файла
 
 
 X_test=data[-4:].loc[:,'lag_4':].reset_index(drop=True)
